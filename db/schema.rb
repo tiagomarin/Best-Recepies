@@ -40,6 +40,8 @@ ActiveRecord::Schema[7.0].define(version: 20_221_121_230_259) do
   create_table 'users', force: :cascade do |t|
     t.string 'name', null: false
     t.string 'role', default: 'user', null: false
+    t.integer "foods_counter", default: 0
+    t.integer "recipes_counter", default: 0
     t.datetime 'created_at', null: false
     t.datetime 'updated_at', null: false
     t.string 'email', default: '', null: false

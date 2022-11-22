@@ -4,11 +4,11 @@
   <% end %>
 
   <div class="flex justify-between items-center">
-    <h1 class="font-bold text-4xl">Recipes</h1>
+    <h1 class="font-bold text-4xl">Public Recipes</h1>
     <%= link_to 'New recipe', new_user_recipe_path(2), class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
   </div>
 
   <div id="recipes" class="min-w-full">
-    <%= render @recipes %>
+    <%= render @public_recipes %>
   </div>
 </div>

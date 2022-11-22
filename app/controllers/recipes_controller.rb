@@ -1,9 +1,17 @@
 class RecipesController < ApplicationController
+  load_and_authorize_resource
   before_action :set_recipe, only: %i[show edit update destroy]
+  before_action :set_user, only: %i[show edit update destroy]
 
   # GET /recipes or /recipes.json
+
+  def public_recipes
+    @public_recipes = Recipe.where(public: true)
+    render :public_recipes
+  end
+
   def index
-    @recipes = Recipe.all
+    @recipes = Recipe.all.where(user_id: current_user.id)
   end
 
   # GET /recipes/1 or /recipes/1.json
@@ -60,6 +68,10 @@ class RecipesController < ApplicationController
   # Use callbacks to share common setup or constraints between actions.
   def set_recipe
     @recipe = Recipe.find(params[:id])
+  end
+
+  def set_user
+    @user = User.find(params[:id])
   end
 
   # Only allow a list of trusted parameters through.

@@ -10,50 +10,38 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 20_221_121_222_414) do
+ActiveRecord::Schema[7.0].define(version: 20_221_121_230_259) do
   # These are extensions that must be enabled in order to support this database
   enable_extension 'plpgsql'
 
   create_table 'foods', force: :cascade do |t|
-    t.string 'name'
-    t.string 'measurement_unit'
-    t.float 'price'
-    t.float 'quantity'
-    t.datetime 'created_at', null: false
-    t.datetime 'updated_at', null: false
-  end
-
-  create_table 'oauth_access_tokens', force: :cascade do |t|
-    t.bigint 'resource_owner_id'
-    t.bigint 'application_id', null: false
-    t.string 'token', null: false
-    t.string 'refresh_token'
-    t.integer 'expires_in'
-    t.datetime 'revoked_at', precision: nil
-    t.datetime 'created_at', precision: nil, null: false
-    t.string 'scopes'
-    t.string 'previous_refresh_token', default: '', null: false
-    t.index ['application_id'], name: 'index_oauth_access_tokens_on_application_id'
-    t.index ['refresh_token'], name: 'index_oauth_access_tokens_on_refresh_token', unique: true
-    t.index ['resource_owner_id'], name: 'index_oauth_access_tokens_on_resource_owner_id'
-    t.index ['token'], name: 'index_oauth_access_tokens_on_token', unique: true
-  end
-
-  create_table 'oauth_applications', force: :cascade do |t|
     t.string 'name', null: false
-    t.string 'uid', null: false
-    t.string 'secret', null: false
-    t.text 'redirect_uri'
-    t.string 'scopes', default: '', null: false
-    t.boolean 'confidential', default: true, null: false
+    t.string 'measurement_unit', null: false
+    t.float 'price', null: false
+    t.float 'quantity', default: 0.0
     t.datetime 'created_at', null: false
     t.datetime 'updated_at', null: false
-    t.index ['uid'], name: 'index_oauth_applications_on_uid', unique: true
+    t.bigint 'user_id', null: false
+    t.index ['user_id'], name: 'index_foods_on_user_id'
+  end
+
+  create_table 'recipes', force: :cascade do |t|
+    t.string 'name', null: false
+    t.float 'preparation_time', null: false
+    t.float 'cooking_time', null: false
+    t.string 'description', null: false
+    t.boolean 'public', default: false, null: false
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.bigint 'user_id', null: false
+    t.index ['user_id'], name: 'index_recipes_on_user_id'
   end
 
   create_table 'users', force: :cascade do |t|
-    t.string 'name'
-    t.string 'role', null: false, default: "user"
+    t.string 'name', null: false
+    t.string 'role', default: 'user', null: false
+    t.integer "foods_counter", default: 0
+    t.integer "recipes_counter", default: 0
     t.datetime 'created_at', null: false
     t.datetime 'updated_at', null: false
     t.string 'email', default: '', null: false
@@ -69,5 +57,6 @@ ActiveRecord::Schema[7.0].define(version: 20_221_121_222_414) do
     t.index ['reset_password_token'], name: 'index_users_on_reset_password_token', unique: true
   end
 
-  add_foreign_key 'oauth_access_tokens', 'oauth_applications', column: 'application_id'
+  add_foreign_key 'foods', 'users'
+  add_foreign_key 'recipes', 'users'
 end

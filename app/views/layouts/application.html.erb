@@ -12,7 +12,18 @@
   </head>
 
   <body>
-    <%= yield %>
+    <nav class="flex justify-between items-center mb-5">
+      <div class="flex gap-2 items-center">
+        <%= image_tag "icon.png", width: 30 %>
+        <span> Best Recipes </span>
+      </div>
+      <%= render "layouts/navbar" %> 
+    </nav>
+    
+    <main>
+      <%= yield %>
+    </main>
+
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
   </body>
