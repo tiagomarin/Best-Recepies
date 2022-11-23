@@ -7,10 +7,7 @@
       <%= button_to "Logout", destroy_user_session_path, method: :delete %>
     </li>
     <li>
-      <%= link_to "Home", root_path %>
-    </li>
-    <li>
-      <%= link_to "Public Recipes", user_recipes_path(current_user) %>
+      <%= link_to "Public Recipes", root_path(current_user) %>
     </li>
     <li>
       <%= link_to "My Recipes", user_recipes_path(current_user) %>

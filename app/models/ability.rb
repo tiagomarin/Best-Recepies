@@ -8,8 +8,8 @@ class Ability
 
     can :read, :all
     can :manage, User, id: user.id
-    can :manage, Food, author_id: user.id
-    can :manage, Recipe, author_id: user.id
+    can :manage, Food, user_id: user.id
+    can :manage, Recipe, user_id: user.id
 
     return unless user.role == 'admin' # admin permissions
 

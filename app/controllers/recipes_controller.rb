@@ -4,12 +4,6 @@ class RecipesController < ApplicationController
   before_action :set_user, only: %i[show edit update destroy]
 
   # GET /recipes or /recipes.json
-
-  def public_recipes
-    @public_recipes = Recipe.where(public: true)
-    render :public_recipes
-  end
-
   def index
     @recipes = Recipe.all.where(user_id: current_user.id)
   end
