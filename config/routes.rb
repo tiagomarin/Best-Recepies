@@ -5,8 +5,10 @@ Rails.application.routes.draw do
   end
   
   resources :users do
-    resources :recipes
     resources :foods
+    resources :recipes do
+      resources :recipe_foods
+    end
   end
   resources :public_recipes, only: [ :index ]
 end

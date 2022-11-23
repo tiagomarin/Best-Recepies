@@ -6,6 +6,15 @@
 
     <%= render @recipe %>
 
+    <ul>
+      <h3>Ingredients</h3>
+      <% @recipe_foods.each do |food| %>
+        <li><%= @recipe_foods.name %></li>
+        <li><%= food.quantity %> <%= food.food.measurement_unit%></li>
+        <%= button_to "Remove", food, :method => :delete %>
+      <% end %>
+    </ul>
+
     <%= link_to 'Edit this recipe', edit_user_recipe_path(@recipe), class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
     <div class="inline-block ml-2">
       <%= button_to 'Destroy this recipe', user_recipe_path(@recipe), method: :delete, class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 font-medium" %>
