@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   devise_for :users
-  root 'public_recipes#index'
+  devise_scope :user do
+    root 'devise/sessions#new'
+  end
   
   resources :users do
     resources :recipes

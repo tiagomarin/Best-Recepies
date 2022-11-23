@@ -1,6 +1,6 @@
 class Recipe < ApplicationRecord
   belongs_to :user, counter_cache: :recipes_counter
-  has_many :recipe_foods, dependent: :destroy
+  has_many :recipe_foods
   has_many :foods, through: :recipe_foods
 
   validates :name, presence: true, length: { maximum: 30 }
