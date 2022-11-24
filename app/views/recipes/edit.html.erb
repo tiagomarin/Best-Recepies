@@ -2,7 +2,10 @@
   <h1 class="font-bold text-4xl">Editing recipe</h1>
 
   <%= render "form", recipe: @recipe %>
+  <%= render "ingredients" %>
 
-  <%= link_to "Show this recipe", user_recipe_path(@recipe), class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-  <%= link_to "Back to recipes", user_recipes_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+  <div>
+    <%= link_to "Show this recipe", user_recipe_path(current_user, @recipe), class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    <%= link_to "Back to recipes", user_recipes_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+  </div>    
 </div>

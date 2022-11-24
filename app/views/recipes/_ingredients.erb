@@ -1,0 +1,12 @@
+<h3>Ingredients</h3>
+<ul class= "flex flex-col rounded-lg py-3 px-5 bg-gray-100 font-medium" >
+  <% @recipe_foods.each do |recipe_food| %>
+    <li class= "grid-cols-3 gap-5">
+      <span><%= recipe_food.food.name %></span> 
+      <span><%= recipe_food.quantity %></span> 
+      <span><%= recipe_food.food.measurement_unit%></span>
+    </li>
+  <% end %>
+</ul>
+<%= link_to "Add ingredient", new_user_recipe_recipe_food_path(current_user, @recipe), class: 'ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium' %>
+ <%= link_to 'See ingredients', user_recipe_recipe_foods_path(current_user, @recipe), class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>

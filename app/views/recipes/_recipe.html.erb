@@ -26,7 +26,10 @@
 
   <% if action_name != "show" %>
     <%= link_to "Show this recipe", user_recipe_path(recipe.user, recipe), class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-    <%= link_to 'Edit this recipe', edit_user_recipe_path(recipe.user, recipe), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
+    <% if can? :manage, Recipe %>
+      <%= link_to 'Edit this recipe', edit_user_recipe_path(recipe.user, recipe), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
+      <%= link_to 'See ingredients', user_recipe_recipe_foods_path(current_user, recipe), class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    <% end %>
     <hr class="mt-6">
   <% end %>
 </div>

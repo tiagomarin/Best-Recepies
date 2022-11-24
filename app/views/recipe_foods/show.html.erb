@@ -6,10 +6,12 @@
 
     <%= render @recipe_food %>
 
-    <%= link_to 'Edit this recipe_food', edit_recipe_food_path(@recipe_food), class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    <%= link_to 'Edit this ingredient', edit_user_recipe_recipe_food_path(current_user, @recipe, @recipe_food), class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    
     <div class="inline-block ml-2">
-      <%= button_to 'Destroy this recipe_food', recipe_food_path(@recipe_food), method: :delete, class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 font-medium" %>
+      <%= button_to 'Remove this ingredient', user_recipe_recipe_food_path(current_user, @recipe, @recipe_food), method: :delete, class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 font-medium" %>
     </div>
-    <%= link_to 'Back to recipe_foods', recipe_foods_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    
+    <%= link_to 'Back to recipe ingredients', user_recipe_recipe_foods_path(current_user, @recipe), class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
   </div>
 </div>

@@ -4,11 +4,14 @@
   <% end %>
 
   <div class="flex justify-between items-center">
-    <h1 class="font-bold text-4xl">Recipe foods</h1>
-    <%= link_to 'New recipe food', new_recipe_food_path, class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
+    <h1 class="font-bold text-4xl"><%= @recipe.name %></h1>
   </div>
+  <h2 class="font-bold text-2xl">Ingredients</h2>
 
-  <div id="recipe_foods" class="min-w-full">
+  <div id="recipe_foods" class="min-w-full my-5">
     <%= render @recipe_foods %>
   </div>
+
+  <%= link_to 'Add ingredient', new_user_recipe_recipe_food_path(current_user,@recipe), class: "ml-2 rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium" %>
+  <%= link_to "Back to recipes", user_recipes_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
 </div>
