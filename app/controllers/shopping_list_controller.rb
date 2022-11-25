@@ -18,20 +18,19 @@ class ShoppingListController < ApplicationController
         else
           @ingredients.push(ingredient)
         end
-        # @ingredients.push(ingredient)
       end
     end
 
     @foods = current_user.foods.all
 
+    # only for printing on the screen
     @ingredient1 = @ingredients[0]
-
     @food_id = @foods[0].id
+    # -------------------------------
 
     @ingredients.each do |ingredient|
-      @ingredient_id = ingredient.food_id
-
-      @available = @foods.select { |food| food.id == ingredient.food_id }
+      @ingredient_id = ingredient.food_id # only for printing on the screen
+      # @available = @foods.select { |food| food.id == ingredient.food_id }
       # if ingredient.quantity > @available.quantity
       #   ingredient.quantity -= @available.quantity
       # else
