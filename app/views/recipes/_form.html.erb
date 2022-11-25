@@ -11,32 +11,32 @@
     </div>
   <% end %>
 
-  <div class="my-5">
-    <%= form.label :name %>
-    <%= form.text_field :name, value: @recipe.name, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+  <div class="mt-2">
+    <%= form.label :name, class: "ml-3" %>
+    <%= form.text_field :name, value: @recipe.name, class: "block mt-2 shadow rounded-md border border-gray-200 outline-none px-3 py-2 w-full" %>
   </div>
 
-  <div class="my-5">
-    <%= form.label :preparation_time %>
-    <%= form.text_field :preparation_time, value: @recipe.preparation_time, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+  <div class="mt-2">
+    <%= form.label :preparation_time, class: "ml-3"  %>
+    <%= form.text_field :preparation_time, value: @recipe.preparation_time, class: "block mt-2 shadow rounded-md border border-gray-200 outline-none px-3 py-2 w-full" %>
   </div>
 
-  <div class="my-5">
-    <%= form.label :cooking_time %>
-    <%= form.text_field :cooking_time, value: @recipe.cooking_time, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+  <div class="mt-2">
+    <%= form.label :cooking_time, class: "ml-3"  %>
+    <%= form.text_field :cooking_time, value: @recipe.cooking_time, class: "block mt-2 shadow rounded-md border border-gray-200 outline-none px-3 py-2 w-full" %>
   </div>
 
-  <div class="my-5">
-    <%= form.label :description %>
-    <%= form.text_field :description, value: @recipe.description, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+  <div class="mt-2">
+    <%= form.label :description, class: "ml-3"  %>
+    <%= form.text_field :description, value: @recipe.description, class: "block mt-2 shadow rounded-md border border-gray-200 outline-none px-3 py-2 w-full" %>
   </div>
 
-  <div class="my-5">
-    <%= form.label :public %>
-    <%= form.check_box :public, checked: @recipe.public, class: "block mt-2 h-5 w-5" %>
+  <div class="">
+    <%= form.label :public, class: "ml-3"  %>
+    <%= form.check_box :public, checked: @recipe.public, class: "block mt-2 h-5 w-5 ml-3" %>
   </div>
 
   <div class="inline">
-    <%= form.submit class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
+    <%= form.submit class: "rounded-lg mt-6 py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
   </div>
 <% end %>

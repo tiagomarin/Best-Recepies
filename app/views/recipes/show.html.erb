@@ -1,5 +1,5 @@
-<div class="mx-auto md:w-2/3 w-full flex">
-  <div class="mx-auto">
+<div class="w-full flex flex-col items-center">
+  <div class="w-full flex flex-col items-center">
     <% if notice.present? %>
       <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
     <% end %>
@@ -7,16 +7,16 @@
     <%= render @recipe %>
     <%= render "ingredients" %>
     
-    <% if can? :manage, Recipe %>
-      <%= link_to 'Edit this recipe', edit_user_recipe_path(current_user, @recipe), class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-      <div class="inline-block ml-2">
-        <%= button_to 'Destroy this recipe', user_recipe_path(current_user,@recipe), method: :delete, class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 font-medium" %>
-      </div>
-      <%= link_to 'Back to recipes', user_recipes_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-    <% else%>
-      <%= link_to 'Back to recipes', public_recipes_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-    <% end %>
-
-    
+    <div class="flex m-5 justify-left gap-3">
+      <% if current_user && current_user == @recipe.user %>
+        <%= link_to 'Edit this recipe', edit_user_recipe_path(current_user, @recipe), class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+        <div class="inline-block ml-2">
+          <%= button_to 'Delete this recipe', user_recipe_path(current_user,@recipe), method: :delete, class: "rounded-lg py-3 px-5 bg-red-400 font-medium" %>
+        </div>
+        <%= link_to 'Back to recipes', user_recipes_path, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+      <% else%>
+        <%= link_to 'Back to recipes', public_recipes_path, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+      <% end %>
+    </div>
   </div>
 </div>
