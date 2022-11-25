@@ -10,7 +10,7 @@ class ShoppingListController < ApplicationController
     @ingredients = []
     recipes = current_user.recipes.all
     recipes.each do |recipe|
-      recipe_foods = RecipeFood.where(recipe_id: recipe.id)
+      recipe_foods = RecipeFood.includes([:food]).where(recipe_id: recipe.id)
       recipe_foods.each do |ingredient|
         if @ingredients.any? { |a| a.food_id == ingredient.food_id }
           found_ingredient = @ingredients.select { |a| a.food_id == ingredient.food_id }
