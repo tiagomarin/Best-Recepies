@@ -1,0 +1,18 @@
+<div id="<%= dom_id recipe_food %>">
+  <h3 class=""><%= recipe_food.food.name %></h3>
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Quantity:</strong>
+    <%= recipe_food.quantity %>
+  </p>
+  
+  <% if action_name != "show" %>
+    <%= link_to "Show this ingredient", user_recipe_recipe_food_path(current_user, @recipe, recipe_food), class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+     
+     <div class="inline-block ml-2">
+      <%= button_to 'Remove this ingredient', user_recipe_recipe_food_path(current_user, @recipe, recipe_food), method: :delete, class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 font-medium" %>
+    </div>
+    
+    <%= link_to 'Edit this ingredient', edit_user_recipe_recipe_food_path(current_user, @recipe,recipe_food), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
+    <hr class="mt-6">
+  <% end %>
+</div>

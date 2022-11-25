@@ -1,0 +1,44 @@
+<div id="<%= dom_id recipe %>" class="flex flex-col w-5/6 rounded shadow-lg my-3">
+  <div class="flex m-5 justify-between gap-8">
+    <div class="flex flex-col">
+      <p class="font-medium mb-1 text-2xl">
+        <%= recipe.name %>
+      </p>
+      <p class="font-medium mb-1">
+        by <%= recipe.user.name %>
+      </p>
+    </div>
+
+    <div class="flex flex-col">
+      <p class="font-medium mb-1">
+        Prep time: <%= recipe.preparation_time %>
+      </p>
+      <p class="font-medium mb-1">
+        Cooking time: <%= recipe.cooking_time %>
+      </p>
+      <% if action_name != "show" %>
+        <p class="font-medium mb-1">
+          Ingredients: <%= recipe.foods.length %>
+        </p>
+      <% end %>
+    </div>
+  </div>
+  
+    <% if action_name == "show" %>
+      <p class="m-5">
+        <strong class="block font-medium mb-1"><%= recipe.description %></strong>
+      </p>
+    <% end %>
+
+    <div class="flex m-5 justify-left gap-2">
+      <% if action_name != "show" %>
+        <%= link_to "See recipe", user_recipe_path(recipe.user, recipe), class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+        <% if current_user && current_user == recipe.user %>
+          <%= link_to 'delete', user_recipe_path(current_user, recipe), method: :delete, class: "rounded-lg py-3 px-5 bg-red-400 inline-block font-medium" %>
+          <%= link_to 'Edit', edit_user_recipe_path(recipe.user, recipe), class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+          <%= link_to 'Ingredients', user_recipe_recipe_foods_path(current_user, recipe), class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+        <% end %>
+        <hr class="mt-6">
+      <% end %>
+    </div>
+</div>
