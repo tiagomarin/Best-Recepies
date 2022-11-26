@@ -1,0 +1,32 @@
+<nav class="flex w-5/6 justify-between mb-5 mx-auto mt-2">
+  <div class="flex gap-2 items-center">
+    <%= image_tag "icon.png", width: 30 %>
+    <span> Best Recipes </span>
+  </div>
+  <ul class="hidden md:flex items-center gap-5 inset-0 h-10">
+    <% if current_user %>
+      <li>
+        <%= current_user.name.split(' ')[0] %>
+      </li>
+      <li>
+        <%= button_to "Logout", destroy_user_session_path, method: :delete %>
+      </li>
+      <li>
+        <%= link_to "Shopping List", user_shopping_list_index_path(current_user) %>
+      </li>
+      <li>
+        <%= link_to "Public Recipes", root_path(current_user) %>
+      </li>
+      <li>
+        <%= link_to "My Recipes", user_recipes_path(current_user) %>
+      </li>
+      <li>
+        <%= link_to "My Foods", user_foods_path(current_user) %>
+      </li>
+    <% else %>
+      <li> <%= link_to "Login", new_user_session_path%> </li>
+      <li> <%= link_to "Sign Up", new_user_registration_path%> </li>
+    <% end %>
+  </ul>
+</nav>
+
